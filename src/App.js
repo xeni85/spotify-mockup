@@ -5,6 +5,7 @@ import './App.css';
 
 function App(props) {
   const apiKey = 'f303eedcd1191e5a406fabd4f0fb671e'
+  let cityName;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
   return (
     <div className="App">
@@ -17,7 +18,7 @@ function App(props) {
             <h1>60°F</h1>
           </div>
           <div className='desc'>
-            <h1>Sunny</h1>
+            <p>Sunny</p>
           </div>
         </div>
         <div className='lower'>
