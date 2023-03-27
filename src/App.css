@@ -1,5 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Outfit&display=swap');
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  position: relative;
+}
+
+.App::before {
+  content: '';
+  background: url('./assets/pexels-johannes-plenio-1133502.jpg');
+  position: absolute;
 }
