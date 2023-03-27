@@ -39,7 +39,7 @@ function App(props) {
         </div>
         <div className='lower'>
           <div className='feels-like'>
-          {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
+          {data.main ? <p className='bold'>{((data.main.feels_like- 273) * 1.8 + 32).toFixed()}°F</p> : null}
             <p>Feels Like</p>
           </div>
           <div className='humidity'>
