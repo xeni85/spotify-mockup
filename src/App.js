@@ -28,10 +28,10 @@ function App(props) {
       <div className='container'>
         <div className='upper'>
           <div className='location'>
-            <h3>New York</h3>
+            <h3>{data.name}</h3>
           </div>
           <div className='weather'>
-            <h1>60°F</h1>
+            <h1>{data.main.temp}°F</h1>
           </div>
           <div className='desc'>
             <p>Sunny</p>
