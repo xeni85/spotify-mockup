@@ -1,11 +1,5 @@
 import React, { useEffect} from 'react';
 import './App.css';
-import Login from './pages/Login';
-import Player from './pages/Player';
-import { reducerCases } from './utils/Constants'
-import { useStateProvider } from './utils/StateProvider';
-import { urlToken } from './utils/spotifyAPI';
-import Body from './pages/Body';
 
 
 function App(props) {
