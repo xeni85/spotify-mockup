@@ -31,10 +31,10 @@ function App(props) {
             <h3>{data.name}</h3>
           </div>
           <div className='weather'>
-            <h1>{data.main.temp}°F</h1>
+            {data.main ? <h1>{data.main.temp}°F</h1> : null}
           </div>
           <div className='desc'>
-            <p>Sunny</p>
+            <p>{data.weather[0].main}</p>
           </div>
         </div>
         <div className='lower'>
