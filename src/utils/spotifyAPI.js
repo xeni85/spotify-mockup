@@ -1,4 +1,3 @@
-import React from 'react';
 
 /*The authEndpoint is the URL where we need to authenticate using Spotify. All Spotify Authentication requests must be passed through this URL.
 The redirectUri is the one which we gave in the Spotify Web API settings, this states where to take back the user if the Spotify login was successful.
@@ -7,8 +6,9 @@ scopes are basically permissions which you need to ask Spotify for. More such pe
 The loginUrl is the final URL which needs to be called in order to authorize an user for our Spotify Clone app. This URL contains the Client ID and all the permissions so that Spotify knows about our app and allows user authentication.*/
 
 const client_id = '951e602a8f6b49dca92fd775c3bd9b9a'
-const redirect_url = 'http://localhost:3000/'
+const redirect_url = 'http://localhost:3000/callback'
 const api_url = 'https://accounts.spotify.com/authorize'
+const client_secret = 'f97d7910077e4f4695c0b22c40b5e6ce'
 const scope = [
     'user-read-private',
     'user-read-email',
@@ -27,24 +27,6 @@ export const loginToUrl = `${api_url}?client_id=${client_id}&redirect_uri=${redi
 
 /*Once you authorize, you find yourself back in the Spotify Clone, but this time, you see an access token in the URL bar. We need that Access Token in order to authenticate users. To do that, we need to take it out of URL bar. So let’s go back to spotify.js and add a function which can do this for us.*/
 
-const spotifyApi = new SpotifyWebApi({
-  redirectUri: process.env.REDIRECT_URI,
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  refreshToken,
-})
-spotifyApi
-    .refreshAccessToken()
-    .then(data => {
-      res.json({
-        accessToken: data.body.accessToken,
-        expiresIn: data.body.expiresIn,
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      res.sendStatus(400)
-    })
 
 export const urlToken = () => {
     //grab what is found after the hashtag
