@@ -1,37 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import './App.css';
 import Login from './pages/Login';
-import { UrlToken } from './utils/spotifyAPI';
-//Once we have the token we can use spotify web-api
-import SpotifyWebApi from "spotify-web-api-js";
 import Player from './pages/Player';
-import { reducer } from './utils/reducer'
+import { reducerCases } from './utils/Constants'
+import { useStateProvider } from './utils/StateProvider';
 
-//create new Spotify object
-const spotify = new SpotifyWebApi();
 
 function App() {
 
-  //create State for the access token
-  const [token, setToken] = useState();
-
+  const [{token}, dispatch] = useStateProvider();
 
   useEffect(() => {
-
-    //get the access token
-    const hash = UrlToken();
-
-    //reset hash
-    window.location.hash = "";
-    const _token = hash.access_token;
-
-    if(_token) {
-      setToken(_token);
-      spotify.setAccessToken(_token);
+    const hash = window.location.hash;
+    if(hash){
+      const token = hash.substring(1).split('&')[0].split('=')[1];
+      dispatch({type:reducerCases.SET_TOKEN, token})
     }
-
-    console.log("token",token)
-  }, [])
+  },[]);
   
   return (
     <div className="App">
