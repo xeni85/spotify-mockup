@@ -1,9 +1,9 @@
 import React from 'react'
+import { urlToken } from '../utils/spotifyAPI'
+import useAuth from '../components/useAuth'
 
-function Body(props) {
-  return (
-    <div>Body</div>
-  )
+function Body({urlToken}) {
+    const accessToken = useAuth(urlToken)
 }
 
 export default Body
