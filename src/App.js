@@ -31,24 +31,24 @@ function App(props) {
             <h3>{data.name}</h3>
           </div>
           <div className='weather'>
-            {data.main ? <h1>{data.main.temp}°F</h1> : null}
+            {data.main ? <h1>{((data.main.temp - 273) * 1.8 + 32).toFixed()}°F</h1> : null}
           </div>
           <div className='desc'>
-            <p>{data.weather[0].main}</p>
+            {data.weather ? <p>{data.weather[0].main}</p>: null}
           </div>
         </div>
         <div className='lower'>
           <div className='feels-like'>
-            <p className='bold'>60°F</p>
+          {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
             <p>Feels Like</p>
           </div>
           <div className='humidity'>
-            <p className='bold'>20%</p>
+          {data.main ? <p className='bold'>%{data.main.humidity}</p> : null}
             <p>humidity</p>
           </div>
           <div className='wind'>
             <p className='bold'>12MPH</p>
-            <p>Wind Speed</p>
+            {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p> : null}
           </div>
         </div>
       </div>
