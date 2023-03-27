@@ -5,15 +5,16 @@ import { UrlToken } from './utils/spotifyAPI';
 //Once we have the token we can use spotify web-api
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from './pages/Player';
-import { useDataLayerValue } from '.DataLayer'
+import  useStateProvider  from './utils/StateProvider'
 
 //create new Spotify object
 const spotify = new SpotifyWebApi();
 
 function App() {
 
+  //manage state with reducer
+  const [{user, token}, dispatch] = reducer();
   //create State for the access token
-  const [token, setToken] = useState();
 
 
   useEffect(() => {
@@ -26,8 +27,23 @@ function App() {
     const _token = hash.access_token;
 
     if(_token) {
-      setToken(_token);
+      dispatch({
+        type:'SET_TOKEN',
+        token:_token
+      });
       spotify.setAccessToken(_token);
+      spotify.getMe().then((user)=>{
+        dispatch({
+          type: 'SET_USER',
+          user,
+        })
+      })
+      spotify.getPlaylist("37i9dQZF1E34Ucml4HHx1w").then((playlist) => {
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: playlist,
+        });
+      });
     }
 
     console.log("token",token)
