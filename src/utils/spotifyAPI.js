@@ -19,7 +19,7 @@ const scope = [
 
  //load this page on button click
 export const loginToUrl = `${api_url}?client_id=${client_id}&redirect_uri=${redirect_url}&scope=${scope.join(
-            " "
+            "%20"
         )}&response_type=token&show_dialog=true`
 
 
