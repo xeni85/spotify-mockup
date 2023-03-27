@@ -1,13 +1,8 @@
-import React from 'react'
-
 export const reducerCases = {
-    SET_TOKEN: 'SET-TOKEN'
+    SET_TOKEN: "SET_TOKEN",
+    SET_PLAYLISTS: "SET_PLAYLISTS",
+    SET_USER: "SET_USER",
+    SET_PLAYLIST: "SET_PLAYLIST",
+    SET_PLAYING: "SET_PLAYING",
+    SET_PLAYER_STATE: "SET_PLAYER_STATE",
 }
-
-function Constants() {
-  return (
-    <div>Constants</div>
-  )
-}
-
-export default Constants
