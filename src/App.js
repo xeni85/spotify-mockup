@@ -44,11 +44,11 @@ function App(props) {
           </div>
           <div className='humidity'>
           {data.main ? <p className='bold'>%{data.main.humidity}</p> : null}
-            <p>humidity</p>
+            <p>Humidity</p>
           </div>
           <div className='wind'>
-            <p className='bold'>12MPH</p>
-            {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p> : null}
+          {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p>: null}
+            <p>Wind</p>
           </div>
         </div>
       </div>
