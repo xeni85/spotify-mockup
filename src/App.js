@@ -4,6 +4,10 @@ import './App.css';
 
 
 function App(props) {
+  const [data, setData] = useState({});
+  const [cityName, setCityName] = useState('');
+  const apiKey = 'f303eedcd1191e5a406fabd4f0fb671e'
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
 
   const searchLocation = (event) => {  
     if(event.key === 'Enter') {
@@ -12,21 +16,14 @@ function App(props) {
           setData(res.data);
           console.log(res.data);
         })
-      .catch(err => {
-          console.log(err);
-        })
+        setCityName('');
     }
   }
 
-
-  const [data, setData] = useState({});
-  const [cityName, setCityName] = useState('');
-  const apiKey = 'f303eedcd1191e5a406fabd4f0fb671e'
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
   return (
     <div className="App">
       <div className='search'>
-        <input type='search' value={cityName} onChange={event => setCityName(event.target.value)} onKeyDown={searchLocation} placeholder="Enter City"/>
+        <input type='text' value={cityName} onChange={event => setCityName(event.target.value)} onKeyDown={searchLocation} placeholder="Enter City"/>
       </div>
       <div className='container'>
         <div className='upper'>
