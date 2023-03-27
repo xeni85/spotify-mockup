@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*The authEndpoint is the URL where we need to authenticate using Spotify. All Spotify Authentication requests must be passed through this URL.
 The redirectUri is the one which we gave in the Spotify Web API settings, this states where to take back the user if the Spotify login was successful.
 The clientId is the Client ID provided to you by the Spotify Web API and you need to mention it here.
@@ -25,6 +27,25 @@ export const loginToUrl = `${api_url}?client_id=${client_id}&redirect_uri=${redi
 
 /*Once you authorize, you find yourself back in the Spotify Clone, but this time, you see an access token in the URL bar. We need that Access Token in order to authenticate users. To do that, we need to take it out of URL bar. So let’s go back to spotify.js and add a function which can do this for us.*/
 
+const spotifyApi = new SpotifyWebApi({
+  redirectUri: process.env.REDIRECT_URI,
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  refreshToken,
+})
+spotifyApi
+    .refreshAccessToken()
+    .then(data => {
+      res.json({
+        accessToken: data.body.accessToken,
+        expiresIn: data.body.expiresIn,
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.sendStatus(400)
+    })
+
 export const urlToken = () => {
     //grab what is found after the hashtag
     return window.location.hash
@@ -36,3 +57,4 @@ export const urlToken = () => {
         return initial;
       }, {});
   };
+
