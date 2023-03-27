@@ -1,18 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from './components/Login';
-
+import { UrlToken } from './utils/spotifyAPI';
 function App() {
+
+  //create State for the access token
+  const [token, setToken] = useState();
+
+
   useEffect(() => {
-    const hash = window.location.hash
-    if(hash){
-      const token = hash.su
+
+    //get the access token
+    const hash = UrlToken();
+
+    window.location.hash = "";
+    const _token = hash.access_token;
+
+    if(_token) {
+      setToken(_token);
     }
+
+    console.log("token",token)
   }, [])
   
   return (
     <div className="App">
-      <Login />
+      {token ? <h1>Logged in</h1> : <Login />}
     </div>
   );
 }
