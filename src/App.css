@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Outfit', 'Times New Roman', Times, serif;
 }
 
 p {
@@ -59,4 +60,33 @@ h1 {
 
 .App .lower {
   display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.App .search {
+  text-align: center;
+  padding: 1rem;
+ }
+
+
+.App input { 
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
