@@ -4,23 +4,15 @@ import Login from './pages/Login';
 import Player from './pages/Player';
 import { reducerCases } from './utils/Constants'
 import { useStateProvider } from './utils/StateProvider';
+import { urlToken } from './utils/spotifyAPI';
+import Body from './pages/Body';
 
 
-function App() {
+function App(props) {
 
-  const [{token}, dispatch] = useStateProvider();
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if(hash){
-      const token = hash.substring(1).split('&')[0].split('=')[1];
-      dispatch({type:reducerCases.SET_TOKEN, token})
-    }
-  },[]);
-  
   return (
     <div className="App">
-      {token ? <h1>Logged in</h1> : <Login />}
+      {urlToken ? <Body /> : <Login />}
     </div>
   );
 }

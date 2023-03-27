@@ -25,7 +25,7 @@ export const loginToUrl = `${api_url}?client_id=${client_id}&redirect_uri=${redi
 
 /*Once you authorize, you find yourself back in the Spotify Clone, but this time, you see an access token in the URL bar. We need that Access Token in order to authenticate users. To do that, we need to take it out of URL bar. So let’s go back to spotify.js and add a function which can do this for us.*/
 
-export const UrlToken = () => {
+export const urlToken = () => {
     //grab what is found after the hashtag
     return window.location.hash
       .substring(1)
